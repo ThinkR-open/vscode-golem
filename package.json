@@ -1,0 +1,549 @@
+{
+  "name": "vscode-golem",
+  "displayName": "Golem",
+  "description": "Manage golem Shiny applications from VS Code",
+  "version": "0.1.0",
+  "publisher": "colinfay",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ThinkR-open/vscode-golem"
+  },
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "workspaceContains:dev/run_dev.R"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "golem.runApp",
+        "title": "Golem: Run app",
+        "icon": "$(play)"
+      },
+      {
+        "command": "golem.test",
+        "title": "Golem: Test",
+        "icon": "$(beaker)"
+      },
+      {
+        "command": "golem.check",
+        "title": "Golem: Check",
+        "icon": "$(checklist)"
+      },
+      {
+        "command": "golem.document",
+        "title": "Golem: Document and reload",
+        "icon": "$(book)"
+      },
+      {
+        "command": "golem.addFavicon",
+        "title": "Golem: Add Favicon",
+        "icon": "$(add)"
+      },
+      {
+        "command": "golem.addUiServerFiles",
+        "title": "Golem: Add ui.R / server.R files",
+        "icon": "$(add)"
+      },
+      {
+        "command": "golem.addRecommendedTests",
+        "title": "Golem: Add Recommended tests",
+        "icon": "$(add)"
+      },
+      {
+        "command": "golem.addReadme",
+        "title": "Golem: Add README.Rmd",
+        "icon": "$(add)"
+      },
+      {
+        "command": "golem.addModule",
+        "title": "Golem: Add Module",
+        "icon": "$(add)"
+      },
+      {
+        "command": "golem.addFct",
+        "title": "Golem: Add Function (fct)",
+        "icon": "$(add)"
+      },
+      {
+        "command": "golem.addUtils",
+        "title": "Golem: Add Utils",
+        "icon": "$(add)"
+      },
+      {
+        "command": "golem.addEmptyFile",
+        "title": "Golem: Add R file (empty)",
+        "icon": "$(add)"
+      },
+      {
+        "command": "golem.addR6",
+        "title": "Golem: Add R6 class",
+        "icon": "$(add)"
+      },
+      {
+        "command": "golem.addDevScript",
+        "title": "Golem: Add Dev script",
+        "icon": "$(add)"
+      },
+      {
+        "command": "golem.addJs",
+        "title": "Golem: Add JS file",
+        "icon": "$(file-code)"
+      },
+      {
+        "command": "golem.addJsHandler",
+        "title": "Golem: Add JS handler",
+        "icon": "$(zap)"
+      },
+      {
+        "command": "golem.addJsInputBinding",
+        "title": "Golem: Add JS input binding",
+        "icon": "$(arrow-right)"
+      },
+      {
+        "command": "golem.addJsOutputBinding",
+        "title": "Golem: Add JS output binding",
+        "icon": "$(arrow-left)"
+      },
+      {
+        "command": "golem.addCss",
+        "title": "Golem: Add CSS file",
+        "icon": "$(paintcan)"
+      },
+      {
+        "command": "golem.addSass",
+        "title": "Golem: Add Sass file",
+        "icon": "$(paintcan)"
+      },
+      {
+        "command": "golem.addHtmlTemplate",
+        "title": "Golem: Add HTML template",
+        "icon": "$(file)"
+      },
+      {
+        "command": "golem.addPartialHtmlTemplate",
+        "title": "Golem: Add Partial HTML template",
+        "icon": "$(file-submodule)"
+      },
+      {
+        "command": "golem.addDockerfile",
+        "title": "Golem: Add Dockerfile (renv)",
+        "icon": "$(package)"
+      },
+      {
+        "command": "golem.addDockerfileShinyproxy",
+        "title": "Golem: Add Dockerfile ShinyProxy (renv)",
+        "icon": "$(package)"
+      },
+      {
+        "command": "golem.addDockerfileHeroku",
+        "title": "Golem: Add Dockerfile Heroku (renv)",
+        "icon": "$(package)"
+      },
+      {
+        "command": "golem.addPositConnect",
+        "title": "Golem: Add Posit Connect file",
+        "icon": "$(cloud-upload)"
+      },
+      {
+        "command": "golem.addRstudioConnect",
+        "title": "Golem: Add RStudio Connect file",
+        "icon": "$(cloud-upload)"
+      },
+      {
+        "command": "golem.addShinyappsio",
+        "title": "Golem: Add shinyapps.io file",
+        "icon": "$(cloud-upload)"
+      },
+      {
+        "command": "golem.addShinyServer",
+        "title": "Golem: Add Shiny Server file",
+        "icon": "$(server)"
+      },
+      {
+        "command": "golem.addRscignore",
+        "title": "Golem: Add .rscignore",
+        "icon": "$(eye-closed)"
+      },
+      {
+        "command": "golem.addGithubAction",
+        "title": "Golem: Add GitHub Action (deploy)",
+        "icon": "$(github)"
+      },
+      {
+        "command": "golem.addGitlabCi",
+        "title": "Golem: Add GitLab CI (deploy)",
+        "icon": "$(git-merge)"
+      },
+      {
+        "command": "golem.addClaudeSkills",
+        "title": "Golem: Add Claude skills",
+        "icon": "$(sparkle)"
+      },
+      {
+        "command": "golem.addAgentSkills",
+        "title": "Golem: Add Agent skills (AGENTS.md)",
+        "icon": "$(sparkle)"
+      },
+      {
+        "command": "golem.add",
+        "title": "Golem: Add…",
+        "icon": "$(add)"
+      },
+      {
+        "command": "golem.goTo",
+        "title": "Golem: Go to…",
+        "icon": "$(go-to-file)"
+      },
+      {
+        "command": "golem.refresh",
+        "title": "Golem: Refresh",
+        "icon": "$(refresh)"
+      },
+      {
+        "command": "golem.testFile",
+        "title": "Golem: Test this file",
+        "icon": "$(beaker)"
+      },
+      {
+        "command": "golem.addTest",
+        "title": "Golem: Add test",
+        "icon": "$(new-file)"
+      },
+      {
+        "command": "golem.openTest",
+        "title": "Golem: Open test",
+        "icon": "$(go-to-file)"
+      },
+      {
+        "command": "golem.addFctToModule",
+        "title": "Golem: Add fct to module",
+        "icon": "$(symbol-method)"
+      },
+      {
+        "command": "golem.addUtilsToModule",
+        "title": "Golem: Add utils to module",
+        "icon": "$(symbol-misc)"
+      }
+    ],
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "golem",
+          "title": "Golem",
+          "icon": "media/golem.svg"
+        }
+      ]
+    },
+    "views": {
+      "golem": [
+        {
+          "id": "golemTree",
+          "name": "App",
+          "icon": "media/golem.svg",
+          "when": "golem.active"
+        }
+      ]
+    },
+    "menus": {
+      "view/title": [
+        {
+          "command": "golem.runApp",
+          "when": "view == golemTree && golem.has.run_dev",
+          "group": "navigation@1"
+        },
+        {
+          "command": "golem.test",
+          "when": "view == golemTree && golem.active",
+          "group": "navigation@2"
+        },
+        {
+          "command": "golem.refresh",
+          "when": "view == golemTree && golem.active",
+          "group": "navigation@3"
+        },
+        {
+          "command": "golem.add",
+          "when": "view == golemTree && golem.active",
+          "group": "1_actions@1"
+        },
+        {
+          "command": "golem.goTo",
+          "when": "view == golemTree && golem.active",
+          "group": "1_actions@2"
+        },
+        {
+          "command": "golem.document",
+          "when": "view == golemTree && golem.has.document_and_reload",
+          "group": "2_dev@1"
+        },
+        {
+          "command": "golem.check",
+          "when": "view == golemTree && golem.active",
+          "group": "2_dev@2"
+        }
+      ],
+      "view/item/context": [
+        {
+          "command": "golem.addModule",
+          "when": "view == golemTree && viewItem == group-modules && golem.has.add_module",
+          "group": "inline"
+        },
+        {
+          "command": "golem.addFct",
+          "when": "view == golemTree && viewItem == group-functions && golem.has.add_fct",
+          "group": "inline"
+        },
+        {
+          "command": "golem.addUtils",
+          "when": "view == golemTree && viewItem == group-utils && golem.has.add_utils",
+          "group": "inline"
+        },
+        {
+          "command": "golem.addEmptyFile",
+          "when": "view == golemTree && viewItem == group-R && golem.has.add_empty_file",
+          "group": "inline"
+        },
+        {
+          "command": "golem.addDevScript",
+          "when": "view == golemTree && viewItem == group-dev && golem.has.add_empty_file",
+          "group": "inline"
+        },
+        {
+          "command": "golem.add",
+          "when": "view == golemTree && viewItem =~ /^group-(app|www)$/ && golem.active",
+          "group": "inline"
+        },
+        {
+          "command": "golem.addFctToModule",
+          "when": "view == golemTree && viewItem =~ /^module/ && golem.active",
+          "group": "inline@1"
+        },
+        {
+          "command": "golem.addUtilsToModule",
+          "when": "view == golemTree && viewItem =~ /^module/ && golem.active",
+          "group": "inline@2"
+        },
+        {
+          "command": "golem.addTest",
+          "when": "view == golemTree && viewItem =~ /-untested$/ && golem.active",
+          "group": "inline@3"
+        },
+        {
+          "command": "golem.openTest",
+          "when": "view == golemTree && viewItem =~ /-tested$/ && golem.active",
+          "group": "1_nav"
+        }
+      ],
+      "editor/context": [
+        {
+          "command": "golem.testFile",
+          "when": "resourceExtname == .R && golem.active",
+          "group": "1_golem"
+        }
+      ],
+      "commandPalette": [
+        {
+          "command": "golem.addFctToModule",
+          "when": "false"
+        },
+        {
+          "command": "golem.addUtilsToModule",
+          "when": "false"
+        },
+        {
+          "command": "golem.addTest",
+          "when": "false"
+        },
+        {
+          "command": "golem.openTest",
+          "when": "false"
+        },
+        {
+          "command": "golem.runApp",
+          "when": "golem.has.run_dev"
+        },
+        {
+          "command": "golem.test",
+          "when": "golem.active"
+        },
+        {
+          "command": "golem.check",
+          "when": "golem.active"
+        },
+        {
+          "command": "golem.document",
+          "when": "golem.has.document_and_reload"
+        },
+        {
+          "command": "golem.addFavicon",
+          "when": "golem.has.use_favicon"
+        },
+        {
+          "command": "golem.addUiServerFiles",
+          "when": "golem.has.add_ui_server_files"
+        },
+        {
+          "command": "golem.addRecommendedTests",
+          "when": "golem.has.use_recommended_tests"
+        },
+        {
+          "command": "golem.addReadme",
+          "when": "golem.has.use_readme_rmd"
+        },
+        {
+          "command": "golem.addModule",
+          "when": "golem.has.add_module"
+        },
+        {
+          "command": "golem.addFct",
+          "when": "golem.has.add_fct"
+        },
+        {
+          "command": "golem.addUtils",
+          "when": "golem.has.add_utils"
+        },
+        {
+          "command": "golem.addEmptyFile",
+          "when": "golem.has.add_empty_file"
+        },
+        {
+          "command": "golem.addR6",
+          "when": "golem.has.add_r6"
+        },
+        {
+          "command": "golem.addDevScript",
+          "when": "golem.has.add_empty_file"
+        },
+        {
+          "command": "golem.addJs",
+          "when": "golem.has.add_js_file"
+        },
+        {
+          "command": "golem.addJsHandler",
+          "when": "golem.has.add_js_handler"
+        },
+        {
+          "command": "golem.addJsInputBinding",
+          "when": "golem.has.add_js_input_binding"
+        },
+        {
+          "command": "golem.addJsOutputBinding",
+          "when": "golem.has.add_js_output_binding"
+        },
+        {
+          "command": "golem.addCss",
+          "when": "golem.has.add_css_file"
+        },
+        {
+          "command": "golem.addSass",
+          "when": "golem.has.add_sass_file"
+        },
+        {
+          "command": "golem.addHtmlTemplate",
+          "when": "golem.has.add_html_template"
+        },
+        {
+          "command": "golem.addPartialHtmlTemplate",
+          "when": "golem.has.add_partial_html_template"
+        },
+        {
+          "command": "golem.addDockerfile",
+          "when": "golem.has.add_dockerfile_with_renv"
+        },
+        {
+          "command": "golem.addDockerfileShinyproxy",
+          "when": "golem.has.add_dockerfile_with_renv_shinyproxy"
+        },
+        {
+          "command": "golem.addDockerfileHeroku",
+          "when": "golem.has.add_dockerfile_with_renv_heroku"
+        },
+        {
+          "command": "golem.addPositConnect",
+          "when": "golem.has.add_positconnect_file"
+        },
+        {
+          "command": "golem.addRstudioConnect",
+          "when": "golem.has.add_rstudioconnect_file"
+        },
+        {
+          "command": "golem.addShinyappsio",
+          "when": "golem.has.add_shinyappsio_file"
+        },
+        {
+          "command": "golem.addShinyServer",
+          "when": "golem.has.add_shinyserver_file"
+        },
+        {
+          "command": "golem.addRscignore",
+          "when": "golem.has.add_rscignore_file"
+        },
+        {
+          "command": "golem.addGithubAction",
+          "when": "golem.has.add_github_action"
+        },
+        {
+          "command": "golem.addGitlabCi",
+          "when": "golem.has.add_gitlab_ci"
+        },
+        {
+          "command": "golem.addClaudeSkills",
+          "when": "golem.has.use_claude_skills"
+        },
+        {
+          "command": "golem.addAgentSkills",
+          "when": "golem.has.use_agent_skills"
+        },
+        {
+          "command": "golem.add",
+          "when": "golem.active"
+        },
+        {
+          "command": "golem.goTo",
+          "when": "golem.active"
+        },
+        {
+          "command": "golem.refresh",
+          "when": "golem.active"
+        },
+        {
+          "command": "golem.testFile",
+          "when": "golem.active"
+        }
+      ]
+    },
+    "snippets": [
+      {
+        "language": "r",
+        "path": "./snippets/r.json"
+      }
+    ],
+    "configuration": {
+      "title": "Golem",
+      "properties": {
+        "golem.rPath": {
+          "type": "string",
+          "default": "R",
+          "description": "Command used to start an R session in the integrated terminal."
+        }
+      }
+    }
+  },
+  "scripts": {
+    "compile": "tsc -p ./ && node scripts/sync-commands.js",
+    "watch": "tsc -watch -p ./",
+    "package": "vsce package"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "@types/vscode": "^1.85.0",
+    "typescript": "^5.4.0"
+  }
+}

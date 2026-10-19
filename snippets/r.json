@@ -1,0 +1,46 @@
+{
+  "Golem module": {
+    "prefix": "golem-module",
+    "body": [
+      "#' ${1:name} UI Function",
+      "#'",
+      "#' @description A shiny Module.",
+      "#'",
+      "#' @param id,input,output,session Internal parameters for {shiny}.",
+      "#'",
+      "#' @noRd",
+      "#'",
+      "#' @importFrom shiny NS tagList",
+      "mod_${1:name}_ui <- function(id) {",
+      "  ns <- NS(id)",
+      "  tagList(",
+      "    $0",
+      "  )",
+      "}",
+      "",
+      "#' ${1:name} Server Functions",
+      "#'",
+      "#' @noRd",
+      "mod_${1:name}_server <- function(id) {",
+      "  moduleServer(id, function(input, output, session) {",
+      "    ns <- session\\$ns",
+      "",
+      "  })",
+      "}"
+    ],
+    "description": "golem module skeleton"
+  },
+  "moduleServer": {
+    "prefix": "moduleServer",
+    "body": [
+      "moduleServer(id, function(input, output, session) {",
+      "  ns <- session\\$ns",
+      "  $0",
+      "})"
+    ]
+  },
+  "ns()": {
+    "prefix": "ns",
+    "body": "ns(\"$1\")$0"
+  }
+}
